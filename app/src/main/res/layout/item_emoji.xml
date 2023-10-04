@@ -7,5 +7,5 @@
     android:background="@color/material_dynamic_primary60"
     android:padding="15dp"
     android:layout_margin="2dp"
-    >
+    android:contentDescription="@string/todoemoji">
 </ImageView>

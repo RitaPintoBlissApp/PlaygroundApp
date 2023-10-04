@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,12 +10,12 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/rvAvatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/material_dynamic_neutral70"
             android:clipToPadding="false"
+            android:contentDescription="@string/avatar_list"
             android:padding="2dp"
             tools:listitem="@layout/item_avatar" />
 

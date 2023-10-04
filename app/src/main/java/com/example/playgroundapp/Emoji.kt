@@ -1,5 +1,4 @@
-package com.example.appplayground
-import com.example.playgroundapp.R
+package com.example.playgroundapp
 
 val emojis = listOf(
     R.drawable.dislike,

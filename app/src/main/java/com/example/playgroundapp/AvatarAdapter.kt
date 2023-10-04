@@ -1,12 +1,10 @@
-package com.example.com.example.playgroundapp
+package com.example.playgroundapp
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.playgroundapp.R
 
 
 class AvatarAdapter(private val avatarList: List<Int>, private val onItemClick: (position: Int) -> Unit) : RecyclerView.Adapter<AvatarAdapter.ViewHolder>() {

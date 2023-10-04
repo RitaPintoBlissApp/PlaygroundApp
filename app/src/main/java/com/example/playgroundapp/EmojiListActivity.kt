@@ -1,5 +1,6 @@
 package com.example.playgroundapp
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import java.util.Random
 
+@Suppress("DEPRECATION")
 class EmojiListActivity : AppCompatActivity() {
     private lateinit var emojiList: MutableList<Int>
     private lateinit var adapter: EmojiAdapter
@@ -19,7 +21,18 @@ class EmojiListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emoji_list)
 
+        recyclerView = findViewById(R.id.rvEmoji)
+        recyclerView.layoutManager = GridLayoutManager(this,4)
+
+        emojiList = generateEmojiList()
+
+        adapter = EmojiAdapter(emojiList){
+            position -> removeEmoji(position)
+        }
+
         recyclerView.adapter = adapter
+
+
 
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
@@ -58,12 +71,14 @@ class EmojiListActivity : AppCompatActivity() {
 
 
     //remover o emoji da sua posição
+    @SuppressLint("NotifyDataSetChanged")
     private fun removeEmoji(position: Int) {
         emojiList.removeAt(position)
         adapter.notifyDataSetChanged()
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun refreshEmojiList() {
         Handler().postDelayed({ //2 sec of delay
             emojiList.clear() //clean all

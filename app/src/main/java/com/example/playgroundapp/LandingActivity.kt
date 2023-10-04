@@ -5,15 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import com.example.appplayground.emojis
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var btnChangeEmoji: Button
     private lateinit var btEmojiList: Button
     private lateinit var imgEmoji: ImageView
     private lateinit var btAvatarList: Button
-
-    val abc = emojis
+    private lateinit var btGoogleRepo: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +23,7 @@ class LandingActivity : AppCompatActivity() {
 
         //change the emoji
         btnChangeEmoji.setOnClickListener {
-            val randomIndex = (0 until emojis.size).random()
+            val randomIndex = (emojis.indices).random()
             val randomemoji = emojis[randomIndex]
             imgEmoji.setImageResource(randomemoji)
         }
@@ -45,6 +43,14 @@ class LandingActivity : AppCompatActivity() {
             val navigatAvatarList = Intent(this, AvatarListActivity::class.java)
             startActivity(navigatAvatarList)
         }
+
+        //to Google Rep
+        btGoogleRepo = findViewById(R.id.btGoogleRepos)
+        btGoogleRepo.setOnClickListener {
+            val navigateGoogleRepActivity = Intent(this, GoogleRepActivity::class.java)
+            startActivity(navigateGoogleRepActivity)
+        }
+
 
     }
 }
