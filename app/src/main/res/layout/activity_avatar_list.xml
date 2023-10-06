@@ -13,7 +13,7 @@
             android:id="@+id/rvAvatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/material_dynamic_neutral70"
+            android:background="@color/green"
             android:clipToPadding="false"
             android:contentDescription="@string/avatar_list"
             android:padding="2dp"

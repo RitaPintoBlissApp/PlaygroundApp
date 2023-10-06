@@ -4,8 +4,10 @@
     android:id="@+id/emojiImageView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/material_dynamic_primary60"
+    android:background="@color/teal_700"
     android:padding="15dp"
     android:layout_margin="2dp"
-    android:contentDescription="@string/todoemoji">
+    android:contentDescription="@string/todoemoji"
+    android:backgroundTint="@color/blue_light"
+    >
 </ImageView>
