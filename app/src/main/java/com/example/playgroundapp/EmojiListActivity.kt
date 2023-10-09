@@ -13,6 +13,7 @@ import java.util.Random
 class EmojiListActivity : AppCompatActivity() {
     private lateinit var emojiList: MutableList<Int>
     private lateinit var adapter: EmojiAdapter
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
@@ -31,9 +32,6 @@ class EmojiListActivity : AppCompatActivity() {
         }
 
         recyclerView.adapter = adapter
-
-
-
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         //atribuimos o evento setOnRefreshListener
