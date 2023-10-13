@@ -1,29 +1,39 @@
 package com.example.playgroundapp
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.playgroundapp.databinding.ActivityEmojiListBinding
 import java.util.Random
 
 @Suppress("DEPRECATION")
 class EmojiListActivity : AppCompatActivity() {
+
+
+    //private lateinit var recyclerView: RecyclerView
+    //private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
+    private  var _binding: ActivityEmojiListBinding? =  null
+
+    private val binding get() = _binding!!
+
     private lateinit var emojiList: MutableList<Int>
     private lateinit var adapter: EmojiAdapter
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_emoji_list)
+        //setContentView(R.layout.activity_emoji_list)
+        _binding = ActivityEmojiListBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        recyclerView = findViewById(R.id.rvEmoji)
-        recyclerView.layoutManager = GridLayoutManager(this,4)
+
+         binding.rvEmoji.layoutManager = GridLayoutManager(this,4)
+
+        //recyclerView = findViewById(R.id.rvEmoji)
+        //recyclerView.layoutManager = GridLayoutManager(this,4)
 
         emojiList = generateEmojiList()
 
@@ -31,11 +41,12 @@ class EmojiListActivity : AppCompatActivity() {
             position -> removeEmoji(position)
         }
 
-        recyclerView.adapter = adapter
+        binding.rvEmoji.adapter = adapter
+        //recyclerView.adapter = adapter
 
-        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        //swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         //atribuimos o evento setOnRefreshListener
-        swipeRefreshLayout.setOnRefreshListener {
+        binding.swipeRefreshLayout.setOnRefreshListener {
             refreshEmojiList()
         }
 
@@ -68,7 +79,6 @@ class EmojiListActivity : AppCompatActivity() {
     }
 
 
-    //remover o emoji da sua posição
     @SuppressLint("NotifyDataSetChanged")
     private fun removeEmoji(position: Int) {
         emojiList.removeAt(position)
@@ -82,7 +92,7 @@ class EmojiListActivity : AppCompatActivity() {
             emojiList.clear() //clean all
             emojiList.addAll(generateEmojiList()) // new list
             adapter.notifyDataSetChanged() // notification of the change
-            swipeRefreshLayout.isRefreshing = false //just to know when the refresh is over
+            binding.swipeRefreshLayout.isRefreshing = false //just to know when the refresh is over
         }, 2000)
     }
 

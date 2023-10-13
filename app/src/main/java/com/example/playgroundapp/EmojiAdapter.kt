@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class EmojiAdapter(private val emojiList: List<Int>, private val onItemClick: (position: Int) -> Unit
-) : RecyclerView.Adapter<EmojiAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<EmojiAdapter.ViewHolderEatchEmoji>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderEatchEmoji {
         // inflate/fill in the layout of the grid with the emoji
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_emoji, parent, false)
-        return ViewHolder(view)
+        return ViewHolderEatchEmoji(view)
     }
 
     //puts the emoji in a position
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderEatchEmoji, position: Int) {
         val emoji = emojiList[position]
         holder.bind(emoji)
 
@@ -34,9 +34,9 @@ class EmojiAdapter(private val emojiList: List<Int>, private val onItemClick: (p
         return emojiList.size
     }
 
-    //viewholder for eatch emoji
+
     //viewholder is a helper class that holds the View of a row or rows
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolderEatchEmoji(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val emojiImageView: ImageView = itemView.findViewById(R.id.emojiImageView)
 
         init {
